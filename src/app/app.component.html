@@ -1,6 +1,11 @@
 <mat-toolbar color="primary">
   <span class="title">2022 鐵人賽範例</span>
-  <button mat-raised-button color="primary">產品清單</button>
+  <button mat-raised-button color="primary" [routerLink]="['product', 'list']">
+    產品清單
+  </button>
   <span class="spacer"></span>
   <button mat-icon-button><mat-icon>shopping_cart</mat-icon></button>
 </mat-toolbar>
+<div>
+  <router-outlet></router-outlet>
+</div>

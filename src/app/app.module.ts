@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ProductPageComponent } from './product-page/product-page.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { AppComponent } from './app.component';
     MatToolbarModule,
     AppRoutingModule,
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, ProductPageComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
