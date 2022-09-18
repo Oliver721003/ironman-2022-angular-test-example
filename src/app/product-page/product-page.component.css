@@ -1,0 +1,13 @@
+h2 {
+  color: white;
+}
+
+div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  margin: 15px;
+  flex: 0 0 calc(100% / 4 - 30px);
+}

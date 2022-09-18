@@ -1,0 +1,20 @@
+:host {
+  display: block;
+}
+
+.mat-card {
+  outline: solid 1px white;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.mat-card-content {
+  margin-top: 30px;
+  margin-left: 22px;
+  text-align: start;
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+}
