@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,6 +30,7 @@ import { TaiwanDatePipe } from './taiwan-date/taiwan-date.pipe';
     MatIconModule,
     MatToolbarModule,
     MatSnackBarModule,
+    HttpClientModule,
     AppRoutingModule,
   ],
   declarations: [
