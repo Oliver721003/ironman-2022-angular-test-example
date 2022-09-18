@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl } from '@angular/forms';
-import { map, Subject, takeUntil } from 'rxjs';
+import { map, mergeMap, Subject, takeUntil } from 'rxjs';
 
-import { Product } from '../model/product';
 import { ShoppingCartItem } from '../model/shopping-cart-item';
+import { ShoppingCartService } from '../services/shopping-cart.service';
 
 @Component({
   templateUrl: './shopping-cart-page.component.html',
@@ -24,7 +24,10 @@ export class ShoppingCartPageComponent implements OnInit, OnDestroy {
 
   protected total = 0;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private shoppingCartService: ShoppingCartService
+  ) {}
 
   ngOnInit(): void {
     this.computeTotal();
@@ -48,26 +51,12 @@ export class ShoppingCartPageComponent implements OnInit, OnDestroy {
   }
 
   private initData(): void {
-    this.items.push(
-      new FormControl<ShoppingCartItem>(
-        new ShoppingCartItem({
-          id: 1,
-          productId: 1,
-          product: new Product({ id: 1, name: '產品 A', price: 999 }),
-          count: 1,
-        })
+    this.shoppingCartService
+      .getItems()
+      .pipe(
+        mergeMap((item) => item),
+        map((item) => new FormControl<ShoppingCartItem | null>(item))
       )
-    );
-
-    this.items.push(
-      new FormControl<ShoppingCartItem>(
-        new ShoppingCartItem({
-          id: 2,
-          productId: 2,
-          product: new Product({ id: 2, name: '產品 B', price: 200 }),
-          count: 1,
-        })
-      )
-    );
+      .subscribe((formControl) => this.items.push(formControl));
   }
 }
