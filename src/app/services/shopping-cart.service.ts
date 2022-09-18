@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ShoppingCartService {
-  private items: ShoppingCartItem[] = [];
+  items: ShoppingCartItem[] = [];
 
   constructor() {}
 }
