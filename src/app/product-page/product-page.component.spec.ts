@@ -33,7 +33,12 @@ describe('ProductPageComponent', () => {
   let component: ProductPageComponent;
   let fixture: ComponentFixture<ProductPageComponent>;
 
+  let productService: jasmine.SpyObj<ProductService>;
+
   beforeEach(async () => {
+    productService = jasmine.createSpyObj<ProductService>(['getProducts']);
+    productService.getProducts.and.returnValue(of(products));
+
     await TestBed.configureTestingModule({
       imports: [
         HttpClientModule,
@@ -48,7 +53,9 @@ describe('ProductPageComponent', () => {
         // Option 1 - 自訂假的產品服務
         // { provide: ProductService, useClass: ProductSpyService },
         // Option 2 - 使用 SpyOn 方法模擬
-        ProductService,
+        // ProductService,
+        // Option 3 - 使用 createSpyObj 方法模擬
+        { provide: ProductService, useValue: productService },
       ],
     }).compileComponents();
 
@@ -61,17 +68,13 @@ describe('ProductPageComponent', () => {
 
   it('當後端服務回傳 3 筆產品資料, 頁面應顯示 3 個產品卡片', () => {
     // Arrange
-    const productService = TestBed.inject(ProductService);
-    spyOn(productService, 'getProducts').and.returnValue(of(products));
-
-    // Act
-    component.ngOnInit();
-    fixture.detectChanges();
-
-    // Assert
     var cards = fixture.debugElement.queryAll(
       By.directive(ProductCardComponent)
     );
+
+    // Act
+
+    // Assert
     expect(cards.length).toBe(3);
   });
 });
