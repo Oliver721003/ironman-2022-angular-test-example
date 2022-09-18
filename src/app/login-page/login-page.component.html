@@ -10,6 +10,7 @@
         formControlName="id"
         required
       />
+      <mat-error *ngIf="id.hasError('shouldBeExists')">此帳號不存在</mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-icon color="primary" matPrefix>lock</mat-icon>
@@ -23,6 +24,8 @@
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary">登入</button>
+    <button mat-raised-button color="primary" [disabled]="form.invalid">
+      登入
+    </button>
   </mat-card-actions>
 </mat-card>
