@@ -7,6 +7,7 @@ import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { Product } from '../model/product';
+import { ShoppingCartItem } from '../model/shopping-cart-item';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 import { ProductCardComponent } from './product-card.component';
 
@@ -59,5 +60,30 @@ describe('ProductCardComponent', () => {
     // Assert
     expect(productTitleElement.textContent).toBe('產品 B');
     expect(productPriceElement.textContent).toBe('$200.00');
+  });
+
+  it('當將產品 C 新增至購物車時, 購物車服務應記錄 1 筆資料', () => {
+    // Arrange
+    const shoppingCartService = TestBed.inject(ShoppingCartService);
+
+    const product = new Product({ id: 3, name: '產品 C', price: 10 });
+
+    component.product = product;
+    fixture.detectChanges();
+
+    // Act
+    const button = fixture.debugElement.queryAll(By.css('button'))[1];
+    // button.triggerEventHandler('click', null);
+    button.nativeElement.click();
+
+    // Assert
+    expect(shoppingCartService.items).toEqual([
+      new ShoppingCartItem({
+        id: 1,
+        productId: 3,
+        product: product,
+        count: 1,
+      }),
+    ]);
   });
 });
