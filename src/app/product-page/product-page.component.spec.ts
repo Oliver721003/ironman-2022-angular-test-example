@@ -45,7 +45,10 @@ describe('ProductPageComponent', () => {
       declarations: [ProductPageComponent, ProductCardComponent],
       providers: [
         ShoppingCartService,
-        { provide: ProductService, useClass: ProductSpyService },
+        // Option 1 - 自訂假的產品服務
+        // { provide: ProductService, useClass: ProductSpyService },
+        // Option 2 - 使用 SpyOn 方法模擬
+        ProductService,
       ],
     }).compileComponents();
 
@@ -58,13 +61,17 @@ describe('ProductPageComponent', () => {
 
   it('當後端服務回傳 3 筆產品資料, 頁面應顯示 3 個產品卡片', () => {
     // Arrange
+    const productService = TestBed.inject(ProductService);
+    spyOn(productService, 'getProducts').and.returnValue(of(products));
+
+    // Act
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    // Assert
     var cards = fixture.debugElement.queryAll(
       By.directive(ProductCardComponent)
     );
-
-    // Act
-
-    // Assert
     expect(cards.length).toBe(3);
   });
 });
