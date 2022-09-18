@@ -1,8 +1,8 @@
 <mat-card>
   <img src="https://api.fnkr.net/testimg/250*250/AAAAAA/FFF/?text=product" />
   <mat-card-content>
-    <h3>商品名稱</h3>
-    <div>商品價格</div>
+    <h3>{{ product.name }}</h3>
+    <div>{{ product.price | currency }}</div>
   </mat-card-content>
   <mat-card-actions>
     <button mat-icon-button>

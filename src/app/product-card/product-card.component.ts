@@ -1,4 +1,6 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
+
+import { Product } from '../model/product';
 
 @Component({
   selector: 'app-product-card',
@@ -6,6 +8,8 @@ import { Component, HostBinding, OnInit } from '@angular/core';
   styleUrls: ['./product-card.component.css'],
 })
 export class ProductCardComponent implements OnInit {
+  @Input() product!: Product;
+
   @HostBinding('class') class = 'product-card';
 
   constructor() {}
