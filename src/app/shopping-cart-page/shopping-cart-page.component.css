@@ -1,3 +1,15 @@
 h2 {
   color: white;
 }
+
+.shopping-cart-form {
+  margin-bottom: 2em;
+}
+
+div.total {
+  padding-right: 30px;
+  line-height: 1.5em;
+  color: white;
+  font-size: 14pt;
+  text-align: end;
+}

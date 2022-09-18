@@ -1,0 +1,20 @@
+<ng-container [formGroup]="form">
+  <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button>
+  <div class="name">{{ product.value!.name }}</div>
+  <div class="price">{{ product.value!.price | currency }}</div>
+  <mat-form-field>
+    <input
+      type="number"
+      min="1"
+      matInput
+      placeholder="數量"
+      formControlName="count"
+      required
+    />
+    <mat-error *ngIf="count.hasError('required')">請輸入數量</mat-error>
+    <mat-error *ngIf="count.hasError('min')">
+      數量最小為 {{ count.getError("min").min }}
+    </mat-error>
+  </mat-form-field>
+  <div class="sum">{{ sum | currency }}</div>
+</ng-container>
