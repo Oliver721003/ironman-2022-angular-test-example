@@ -1,9 +1,11 @@
 import {
   Component,
+  EventEmitter,
   forwardRef,
   HostBinding,
   OnDestroy,
   OnInit,
+  Output,
 } from '@angular/core';
 import {
   FormBuilder,
@@ -29,6 +31,8 @@ import { ShoppingCartItem } from '../model/shopping-cart-item';
   ],
 })
 export class ShoppingCartFormComponent implements OnInit, OnDestroy {
+  @Output() protected delete = new EventEmitter<void>();
+
   readonly form = this.fb.group({
     id: this.fb.control<number | null>(null),
     productId: this.fb.control<number | null>(null),

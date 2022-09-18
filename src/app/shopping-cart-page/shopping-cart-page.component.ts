@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl } from '@angular/forms';
 import { map, mergeMap, Subject, takeUntil } from 'rxjs';
@@ -26,6 +27,7 @@ export class ShoppingCartPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
+    private snackBar: MatSnackBar,
     private shoppingCartService: ShoppingCartService
   ) {}
 
@@ -37,6 +39,12 @@ export class ShoppingCartPageComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.stop$.next();
     this.stop$.complete();
+  }
+
+  onDelete(index: number): void {
+    this.shoppingCartService.delete(this.items.at(index).value!.id);
+    this.items.removeAt(index);
+    this.snackBar.open('己從購物車移除');
   }
 
   private computeTotal(): void {

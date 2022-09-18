@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,6 +26,7 @@ import { ShoppingCartPageComponent } from './shopping-cart-page/shopping-cart-pa
     MatInputModule,
     MatIconModule,
     MatToolbarModule,
+    MatSnackBarModule,
     AppRoutingModule,
   ],
   declarations: [

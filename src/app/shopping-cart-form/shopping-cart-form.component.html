@@ -1,5 +1,7 @@
 <ng-container [formGroup]="form">
-  <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button>
+  <button mat-icon-button color="warn" (click)="delete.emit()">
+    <mat-icon>delete</mat-icon>
+  </button>
   <div class="name">{{ product.value!.name }}</div>
   <div class="price">{{ product.value!.price | currency }}</div>
   <mat-form-field>

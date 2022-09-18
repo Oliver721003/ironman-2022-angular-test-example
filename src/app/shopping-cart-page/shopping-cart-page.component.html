@@ -4,7 +4,10 @@
     formArrayName="items"
     *ngFor="let item of items.controls; let i = index"
   >
-    <app-shopping-cart-form [formControlName]="i"></app-shopping-cart-form>
+    <app-shopping-cart-form
+      [formControlName]="i"
+      (delete)="onDelete(i)"
+    ></app-shopping-cart-form>
   </ng-container>
 </ng-container>
 <hr />
