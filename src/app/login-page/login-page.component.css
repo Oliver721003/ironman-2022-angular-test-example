@@ -1,3 +1,29 @@
 :host {
   color: white;
 }
+
+.mat-card {
+  margin: 10px auto;
+  padding-bottom: 2em;
+  width: 450px;
+}
+
+.mat-card-title {
+  text-align: center;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+.mat-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-form-field {
+  margin-bottom: 2em;
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: center;
+}
