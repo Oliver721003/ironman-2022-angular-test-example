@@ -1,4 +1,11 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Product } from '../model/product';
@@ -11,6 +18,8 @@ import { ShoppingCartService } from '../services/shopping-cart.service';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product!: Product;
+
+  @Output() detail = new EventEmitter<void>();
 
   @HostBinding('class') class = 'product-card';
 

@@ -1,0 +1,20 @@
+<h2>產品資料</h2>
+<div *ngIf="product$ | async as product">
+  <table border="1">
+    <tr>
+      <td>產品編號</td>
+      <td>{{ product.id }}</td>
+    </tr>
+    <tr>
+      <td>產品名稱</td>
+      <td>{{ product.name }}</td>
+    </tr>
+    <tr>
+      <td>產品售價</td>
+      <td>{{ product.price | currency }}</td>
+    </tr>
+  </table>
+</div>
+<div class="button">
+  <button mat-button (click)="onCancel()">返回清單</button>
+</div>

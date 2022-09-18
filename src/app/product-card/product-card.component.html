@@ -5,7 +5,7 @@
     <div>{{ product.price | currency }}</div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-icon-button>
+    <button mat-icon-button (click)="detail.emit()">
       <mat-icon>search</mat-icon>
     </button>
     <button mat-icon-button (click)="onAdd()">

@@ -16,6 +16,10 @@ export class ProductService {
 
   constructor() {}
 
+  getProduct(id: number): Observable<Product> {
+    return of(this.products.find((product) => product.id === id)!);
+  }
+
   getProducts(): Observable<Product[]> {
     return of(this.products);
   }

@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { ShoppingCartFormComponent } from './shopping-cart-form/shopping-cart-form.component';
 import { ShoppingCartPageComponent } from './shopping-cart-page/shopping-cart-page.component';
@@ -35,6 +36,7 @@ import { ShoppingCartPageComponent } from './shopping-cart-page/shopping-cart-pa
     ProductCardComponent,
     ShoppingCartPageComponent,
     ShoppingCartFormComponent,
+    ProductDetailPageComponent,
   ],
   bootstrap: [AppComponent],
 })

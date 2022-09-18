@@ -1,0 +1,26 @@
+:host {
+  color: white;
+}
+
+table {
+  text-decoration: solid;
+  width: 500px;
+}
+
+tr {
+  line-height: 2.5em;
+}
+
+td:first-child {
+  font-weight: bold;
+  text-align: center;
+}
+
+td:last-child {
+  padding-left: 1em;
+}
+
+div.button {
+  padding: 1em 0px;
+  text-align: center;
+}
