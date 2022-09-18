@@ -4,7 +4,9 @@
     產品清單
   </button>
   <span class="spacer"></span>
-  <button mat-icon-button><mat-icon>shopping_cart</mat-icon></button>
+  <button mat-icon-button [routerLink]="['shopping-cart', 'list']">
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
 </mat-toolbar>
 <div>
   <router-outlet></router-outlet>

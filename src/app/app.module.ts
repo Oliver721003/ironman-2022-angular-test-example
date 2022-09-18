@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductPageComponent } from './product-page/product-page.component';
+import { ShoppingCartPageComponent } from './shopping-cart-page/shopping-cart-page.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import { ProductPageComponent } from './product-page/product-page.component';
     MatToolbarModule,
     AppRoutingModule,
   ],
-  declarations: [AppComponent, ProductPageComponent, ProductCardComponent],
+  declarations: [AppComponent, ProductPageComponent, ProductCardComponent, ShoppingCartPageComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
