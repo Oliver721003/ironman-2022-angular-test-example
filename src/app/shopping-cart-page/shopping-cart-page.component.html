@@ -14,3 +14,11 @@
   <div class="total">總計：{{ total | currency }}</div>
 </ng-container>
 <div class="empty" *ngIf="items.length === 0">無購物資料</div>
+<div class="button">
+  <button mat-raised-button color="accent" (click)="onGotoProductsPage()">
+    繼續購物
+  </button>
+  <button mat-raised-button color="primary" [disabled]="items.length === 0">
+    建立訂單
+  </button>
+</div>

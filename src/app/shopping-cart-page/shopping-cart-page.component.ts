@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { map, mergeMap, Subject, takeUntil } from 'rxjs';
 
 import { ShoppingCartItem } from '../model/shopping-cart-item';
@@ -29,6 +30,7 @@ export class ShoppingCartPageComponent implements OnInit, OnDestroy {
   protected total = 0;
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private shoppingCartService: ShoppingCartService,
@@ -49,6 +51,10 @@ export class ShoppingCartPageComponent implements OnInit, OnDestroy {
     this.shoppingCartService.delete(this.items.at(index).value!.id);
     this.items.removeAt(index);
     this.snackBar.open('己從購物車移除');
+  }
+
+  onGotoProductsPage(): void {
+    void this.router.navigate(['product', 'list']);
   }
 
   private computeTotal(): void {
