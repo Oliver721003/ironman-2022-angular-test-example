@@ -1,6 +1,6 @@
 <h2>購物車</h2>
 <ng-container [formGroup]="form" *ngIf="items.length > 0">
-  <div class="title">購物日期：{{ currentDate | date: "yyyy-MM-dd" }}</div>
+  <div class="title">購物日期：{{ currentDate | taiwanDate }}</div>
   <ng-container
     formArrayName="items"
     *ngFor="let item of items.controls; let i = index"
