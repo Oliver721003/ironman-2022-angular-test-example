@@ -1,4 +1,4 @@
-h2 {
+:host {
   color: white;
 }
 
@@ -6,10 +6,21 @@ h2 {
   margin-bottom: 2em;
 }
 
+div.title {
+  margin-bottom: 10px;
+  font-size: 14pt;
+}
+
 div.total {
   padding-right: 30px;
   line-height: 1.5em;
-  color: white;
   font-size: 14pt;
   text-align: end;
+}
+
+div.empty {
+  outline: solid 1px white;
+  line-height: 3em;
+  font-size: 14pt;
+  text-align: center;
 }

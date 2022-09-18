@@ -16,6 +16,8 @@ export class ShoppingCartPageComponent implements OnInit, OnDestroy {
     items: this.fb.array<ShoppingCartItem>([]),
   });
 
+  protected currentDate = new Date();
+
   get items(): FormArray<FormControl<ShoppingCartItem | null>> {
     return this.form.get('items') as FormArray<
       FormControl<ShoppingCartItem | null>
