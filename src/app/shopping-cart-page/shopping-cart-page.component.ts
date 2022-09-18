@@ -1,9 +1,10 @@
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { map, mergeMap, Subject, takeUntil } from 'rxjs';
 
 import { ShoppingCartItem } from '../model/shopping-cart-item';
+import { OrderPriceComputeService } from '../services/order-price-compute.service';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 
 @Component({
@@ -28,7 +29,8 @@ export class ShoppingCartPageComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private shoppingCartService: ShoppingCartService
+    private shoppingCartService: ShoppingCartService,
+    private orderPriceComputeService: OrderPriceComputeService
   ) {}
 
   ngOnInit(): void {
@@ -50,9 +52,8 @@ export class ShoppingCartPageComponent implements OnInit, OnDestroy {
   private computeTotal(): void {
     this.items.valueChanges
       .pipe(
-        map((items) =>
-          items.map((item) => item!.sum).reduce((acc, value) => acc + value, 0)
-        ),
+        map((items) => items.map((item) => item!.sum)),
+        map((sums) => this.orderPriceComputeService.compute(sums)),
         takeUntil(this.stop$)
       )
       .subscribe((total) => (this.total = total));
