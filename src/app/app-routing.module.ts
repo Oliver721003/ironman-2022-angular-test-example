@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { ShoppingCartPageComponent } from './shopping-cart-page/shopping-cart-page.component';
 
 const routes: Routes = [
+  { path: 'login', component: LoginPageComponent },
   {
     path: 'product',
     children: [

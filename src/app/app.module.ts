@@ -18,6 +18,7 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { ShoppingCartFormComponent } from './shopping-cart-form/shopping-cart-form.component';
 import { ShoppingCartPageComponent } from './shopping-cart-page/shopping-cart-page.component';
 import { TaiwanDatePipe } from './taiwan-date/taiwan-date.pipe';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import { TaiwanDatePipe } from './taiwan-date/taiwan-date.pipe';
     ShoppingCartFormComponent,
     ProductDetailPageComponent,
     TaiwanDatePipe,
+    LoginPageComponent,
   ],
   bootstrap: [AppComponent],
 })
