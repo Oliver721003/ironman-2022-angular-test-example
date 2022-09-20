@@ -8,9 +8,13 @@ import {
   Output,
 } from '@angular/core';
 import {
+  ControlValueAccessor,
   FormBuilder,
   FormControl,
+  NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator,
   Validators,
 } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
@@ -28,9 +32,16 @@ import { ShoppingCartItem } from '../model/shopping-cart-item';
       useExisting: forwardRef(() => ShoppingCartFormComponent),
       multi: true,
     },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => ShoppingCartFormComponent),
+      multi: true,
+    },
   ],
 })
-export class ShoppingCartFormComponent implements OnInit, OnDestroy {
+export class ShoppingCartFormComponent
+  implements OnInit, ControlValueAccessor, Validator, OnDestroy
+{
   @Output() protected delete = new EventEmitter<void>();
 
   readonly form = this.fb.group({
@@ -97,5 +108,12 @@ export class ShoppingCartFormComponent implements OnInit, OnDestroy {
 
   registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
+  }
+
+  validate(): ValidationErrors | null {
+    if (this.form.valid) {
+      return null;
+    }
+    return { valid: false };
   }
 }
