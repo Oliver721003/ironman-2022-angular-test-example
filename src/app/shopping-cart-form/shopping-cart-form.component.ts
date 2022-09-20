@@ -40,22 +40,21 @@ export class ShoppingCartFormComponent implements OnInit, OnDestroy {
     count: this.fb.control<number | null>(1, {
       validators: [Validators.required, Validators.min(1)],
     }),
-    sum: this.fb.control<number | null>(null),
   });
 
-  protected get formData(): ShoppingCartItem {
+  get formData(): ShoppingCartItem {
     return new ShoppingCartItem(this.form.value);
   }
 
-  protected get product(): FormControl<Product | null> {
+  get product(): FormControl<Product | null> {
     return this.form.get('product') as FormControl<Product | null>;
   }
 
-  protected get count(): FormControl<number | null> {
+  get count(): FormControl<number | null> {
     return this.form.get('count') as FormControl<number | null>;
   }
 
-  protected get sum(): number {
+  get sum(): number {
     return this.product.value!.price * (this.count.value || 1);
   }
 
