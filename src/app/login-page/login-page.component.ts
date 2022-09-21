@@ -41,8 +41,6 @@ export class LoginPageComponent implements OnInit {
   shouldBeExists(
     control: AbstractControl
   ): Observable<ValidationErrors | null> {
-    console.log(control.value);
-
     if (
       control.value === undefined ||
       control.value === null ||
