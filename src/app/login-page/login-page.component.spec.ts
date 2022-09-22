@@ -1,9 +1,4 @@
-import {
-  ComponentFixture,
-  fakeAsync,
-  TestBed,
-  tick,
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import {
@@ -50,7 +45,7 @@ describe('LoginPageComponent', () => {
 
   it('元件應可以被建立', () => expect(component).toBeTruthy());
 
-  it('當帳號不存在時, 應顯示錯誤訊息為 "此帳號不存在"', fakeAsync(() => {
+  it('當帳號不存在時, 應顯示錯誤訊息為 "此帳號不存在"', async () => {
     // Arrange
     const formFieldElement = fixture.debugElement.query(
       By.directive(MatFormField)
@@ -63,11 +58,11 @@ describe('LoginPageComponent', () => {
     inputElement.value = 'oliver';
     inputElement.dispatchEvent(new Event('input'));
     inputElement.dispatchEvent(new Event('blur'));
-    tick(1000);
+    await fixture.whenStable();
     fixture.detectChanges();
 
     // Assert
     const errorElement = formFieldElement.query(By.directive(MatError));
     expect(errorElement.nativeElement.textContent.trim()).toBe('此帳號不存在');
-  }));
+  });
 });
