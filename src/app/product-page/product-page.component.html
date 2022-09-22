@@ -3,5 +3,6 @@
   <app-product-card
     *ngFor="let product of products$ | async"
     [product]="product"
+    (detail)="onGoto(product.id)"
   ></app-product-card>
 </div>
