@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { By } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 
 import { Product } from '../model/product';
@@ -33,9 +34,13 @@ describe('ProductPageComponent', () => {
   let component: ProductPageComponent;
   let fixture: ComponentFixture<ProductPageComponent>;
 
+  let router: jasmine.SpyObj<Router>;
+
   let productService: jasmine.SpyObj<ProductService>;
 
   beforeEach(async () => {
+    router = jasmine.createSpyObj<Router>(['navigate']);
+
     productService = jasmine.createSpyObj<ProductService>(['getProducts']);
     productService.getProducts.and.returnValue(of(products));
 
@@ -49,6 +54,7 @@ describe('ProductPageComponent', () => {
       ],
       declarations: [ProductPageComponent, ProductCardComponent],
       providers: [
+        { provide: Router, useValue: router },
         ShoppingCartService,
         // Option 1 - 自訂假的產品服務
         // { provide: ProductService, useClass: ProductSpyService },
@@ -76,5 +82,19 @@ describe('ProductPageComponent', () => {
 
     // Assert
     expect(cards.length).toBe(3);
+  });
+
+  it('當點選 id 為 1 產品的明細按鈕, 應轉址到"product/detail/1"', () => {
+    // Arrange
+    var cards = fixture.debugElement.queryAll(
+      By.directive(ProductCardComponent)
+    );
+    var detailButton = cards[0].query(By.css('button'));
+
+    // Act
+    detailButton.triggerEventHandler('click', null);
+
+    // Assert
+    expect(router.navigate).toHaveBeenCalledWith(['product', 'detail', 1]);
   });
 });
