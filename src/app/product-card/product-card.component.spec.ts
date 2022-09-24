@@ -60,7 +60,7 @@ describe('ProductCardComponent', () => {
   it('當將產品 C 新增至購物車時, 購物車服務應記錄 1 筆資料', () => {
     // Arrange
     const shoppingCartService = TestBed.inject(ShoppingCartService);
-    spyOn(shoppingCartService, 'add').and.callThrough();
+    jest.spyOn(shoppingCartService, 'add');
 
     const product = new Product({ id: 3, name: '產品 C', price: 10 });
 

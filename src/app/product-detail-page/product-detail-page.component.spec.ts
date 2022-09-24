@@ -12,12 +12,14 @@ describe('ProductDetailPageComponent', () => {
 
   let activatedRoute: ActivatedRouteStub;
 
-  let productService: jasmine.SpyObj<ProductService>;
+  let productService: Partial<ProductService>;
 
   beforeEach(async () => {
     activatedRoute = new ActivatedRouteStub({ id: '1' });
 
-    productService = jasmine.createSpyObj<ProductService>(['getProduct']);
+    productService = {
+      getProduct: jest.fn(),
+    };
 
     await TestBed.configureTestingModule({
       imports: [MatButtonModule],

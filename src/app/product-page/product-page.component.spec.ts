@@ -34,15 +34,16 @@ describe('ProductPageComponent', () => {
   let component: ProductPageComponent;
   let fixture: ComponentFixture<ProductPageComponent>;
 
-  let router: jasmine.SpyObj<Router>;
+  let router: Partial<Router>;
 
-  let productService: jasmine.SpyObj<ProductService>;
+  let productService: Partial<ProductService>;
 
   beforeEach(async () => {
-    router = jasmine.createSpyObj<Router>(['navigate']);
+    router = { navigate: jest.fn() };
 
-    productService = jasmine.createSpyObj<ProductService>(['getProducts']);
-    productService.getProducts.and.returnValue(of(products));
+    productService = {
+      getProducts: jest.fn().mockReturnValue(of(products)),
+    };
 
     await TestBed.configureTestingModule({
       imports: [

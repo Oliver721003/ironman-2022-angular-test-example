@@ -167,8 +167,8 @@ describe('ShoppingCartFormComponent', () => {
       fixture.detectChanges();
 
       // Assert
-      expect(component.itemForm.form.valid).toBeFalse();
-      expect(component.formControl.valid).toBeFalse();
+      expect(component.itemForm.form.valid).toBeFalsy();
+      expect(component.formControl.valid).toBeFalsy();
     });
 
     it('當資料完整輸入後, 表單驗證應為通過', () => {
@@ -192,8 +192,8 @@ describe('ShoppingCartFormComponent', () => {
       fixture.detectChanges();
 
       // Assert
-      expect(component.itemForm.form.valid).toBeTrue();
-      expect(component.formControl.valid).toBeTrue();
+      expect(component.itemForm.form.valid).toBeTruthy();
+      expect(component.formControl.valid).toBeTruthy();
     });
   });
 });

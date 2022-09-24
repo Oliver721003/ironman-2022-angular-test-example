@@ -19,11 +19,12 @@ describe('LoginPageComponent', () => {
   let component: LoginPageComponent;
   let fixture: ComponentFixture<LoginPageComponent>;
 
-  let authService: jasmine.SpyObj<AuthenticationService>;
+  let authService: Partial<AuthenticationService>;
 
   beforeEach(async () => {
-    authService = jasmine.createSpyObj('AuthenticationService', ['isExists']);
-    authService.isExists.and.returnValue(of(false).pipe(delay(1000)));
+    authService = {
+      isExists: jest.fn().mockReturnValue(of(false).pipe(delay(1000))),
+    };
 
     await TestBed.configureTestingModule({
       imports: [
