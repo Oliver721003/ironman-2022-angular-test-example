@@ -7,7 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:headless": "ng test --watch=false --browsers=ChromeHeadless --code-coverage --no-progress --reporters spec"
+    "test:headless": "ng test --watch=false --browsers=ChromeHeadless --code-coverage --no-progress --reporters spec",
+    "e2e": "ng e2e",
+    "e2e:run": "ng run ironman-2022-angular-test-example:cypress-run"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +31,7 @@
     "@angular-devkit/build-angular": "^14.2.1",
     "@angular/cli": "~14.2.1",
     "@angular/compiler-cli": "^14.0.0",
+    "@cypress/schematic": "^2.1.1",
     "@types/jasmine": "~4.0.0",
     "jasmine-core": "~4.3.0",
     "karma": "~6.4.0",
@@ -38,6 +41,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "karma-spec-reporter": "^0.0.34",
-    "typescript": "~4.7.2"
+    "typescript": "~4.7.2",
+    "cypress": "latest"
   }
 }
