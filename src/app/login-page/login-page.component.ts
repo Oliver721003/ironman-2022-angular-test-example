@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -33,10 +34,21 @@ export class LoginPageComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private snackBar: MatSnackBar,
     private authenticationService: AuthenticationService
   ) {}
 
   ngOnInit(): void {}
+
+  onLogin(): void {
+    this.authenticationService.login(this.form.value).subscribe((result) => {
+      if (result) {
+        this.snackBar.open('登入成功');
+      } else {
+        this.snackBar.open('登入失敗');
+      }
+    });
+  }
 
   shouldBeExists(
     control: AbstractControl

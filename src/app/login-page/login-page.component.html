@@ -24,7 +24,13 @@
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary" [disabled]="form.invalid">
+    <button
+      type="button"
+      mat-raised-button
+      color="primary"
+      [disabled]="form.invalid"
+      (click)="onLogin()"
+    >
       登入
     </button>
   </mat-card-actions>
