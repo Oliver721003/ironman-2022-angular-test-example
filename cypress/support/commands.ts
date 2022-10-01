@@ -1,43 +1,30 @@
-// ***********************************************
-// This example namespace declaration will help
-// with Intellisense and code completion in your
-// IDE or Text Editor.
-// ***********************************************
-// declare namespace Cypress {
-//   interface Chainable<Subject = any> {
-//     customCommand(param: any): typeof customCommand;
-//   }
-// }
-//
-// function customCommand(param: any): void {
-//   console.warn(param);
-// }
-//
-// NOTE: You can use it like so:
-// Cypress.Commands.add('customCommand', customCommand);
-//
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+declare namespace Cypress {
+  interface Chainable<Subject = any> {
+    gotoLogin(): Chainable<JQuery<HTMLElement>>;
+    inputIdAndPassword(
+      id: string,
+      password: string
+    ): Chainable<JQuery<HTMLElement>>;
+    login(): Chainable<JQuery<HTMLElement>>;
+    snackBarShouldBe(message: string): Chainable<JQuery<HTMLElement>>;
+  }
+}
+
+Cypress.Commands.add('gotoLogin', () =>
+  cy.get('button.mat-icon-button').eq(1).click()
+);
+
+Cypress.Commands.add('inputIdAndPassword', (id: string, password: string) => {
+  cy.get('input[type=text]').type(id).blur();
+  if (password) {
+    cy.get('input[type=password]').type(password);
+  }
+});
+
+Cypress.Commands.add('login', () => {
+  return cy.get('button').contains('登入').parent().click({ force: true });
+});
+
+Cypress.Commands.add('snackBarShouldBe', (message: string) =>
+  cy.get('.mat-snack-bar-container').should('exist').and('have.text', message)
+);
