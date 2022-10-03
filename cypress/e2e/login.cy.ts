@@ -25,6 +25,7 @@ describe('使用者登入', () => {
         cy.inputIdAndPassword(id, password);
         cy.login().should('be.disabled');
         cy.get('mat-error').should('exist').and('have.text', '此帳號不存在');
+        cy.screenshot();
       });
     });
 
@@ -33,6 +34,7 @@ describe('使用者登入', () => {
         cy.inputIdAndPassword(id, password);
         cy.login().should('not.be.disabled');
         cy.snackBarShouldBe('登入失敗');
+        cy.screenshot();
       });
     });
 
@@ -41,6 +43,7 @@ describe('使用者登入', () => {
         cy.inputIdAndPassword(id, password);
         cy.login().should('not.be.disabled');
         cy.snackBarShouldBe('登入成功');
+        cy.screenshot();
       });
     });
   });
