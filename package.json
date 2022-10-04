@@ -12,6 +12,12 @@
     "e2e:run": "ng run ironman-2022-angular-test-example:cypress-run"
   },
   "private": true,
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": [
+      "cypress/steps/**/*.step.{js,ts}"
+    ]
+  },
   "dependencies": {
     "@angular/animations": "^14.0.0",
     "@angular/cdk": "^14.2.2",
@@ -31,6 +37,8 @@
     "@angular-devkit/build-angular": "^14.2.1",
     "@angular/cli": "~14.2.1",
     "@angular/compiler-cli": "^14.0.0",
+    "@badeball/cypress-cucumber-preprocessor": "^13.0.2",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.1.5",
     "@cypress/schematic": "^2.1.1",
     "@types/jasmine": "~4.0.0",
     "cypress": "^10.9.0",
