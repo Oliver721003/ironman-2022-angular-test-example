@@ -33,7 +33,11 @@ module.exports = function (config) {
         "./coverage/ironman-2022-angular-test-example"
       ),
       subdir: ".",
-      reporters: [{ type: "html" }, { type: "text-summary" }],
+      reporters: [
+        { type: "html" },
+        { type: "text-summary" },
+        { type: "lcovonly" },
+      ],
     },
     reporters: ["progress", "kjhtml", "junit"],
     port: 9876,

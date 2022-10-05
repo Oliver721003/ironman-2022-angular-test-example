@@ -1,0 +1,29 @@
+name: Angular Build
+
+on:
+  push:
+    branches:
+      - feature/*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      REPOSITORY_URL: https://github.com/Oliver721003/ironman-2022-angular-test-example
+      IMAGE_NAME: ${{ github.repository }}/alerta-cli
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - name: Setup Node
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 18.x
+      - name: Package Restore
+        run: npm install
+      - name: Unit Testing
+        run: npm run test:headless
+      - name: E2E Testing
+        run: npm run e2e:run
+      - name: Application Build
+        run: npm run build
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
