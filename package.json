@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:headless": "ng test --watch=false --browsers=ChromeHeadless --code-coverage --no-progress --reporters spec",
+    "test:headless": "ng test --watch=false --browsers=ChromeHeadless --code-coverage --no-progress --reporters spec,junit",
     "e2e": "ng e2e",
     "e2e:run": "ng run ironman-2022-angular-test-example:cypress-run"
   },
@@ -50,6 +50,7 @@
     "karma-firefox-launcher": "^2.1.2",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "karma-junit-reporter": "^2.0.1",
     "karma-spec-reporter": "^0.0.34",
     "typescript": "~4.7.2"
   }
